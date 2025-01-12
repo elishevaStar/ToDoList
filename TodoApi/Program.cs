@@ -13,6 +13,8 @@ using BCrypt.Net;
 
 
 var builder = WebApplication.CreateBuilder(args);
+//קריאת משתני סביבה
+builder.Configuration.AddEnvironmentVariables();
 
 // הוספת Authentication ושימוש ב-JWT
 var jwtSecretKey = builder.Configuration["Jwt:Key"] 
@@ -33,8 +35,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = key
         };
     });
-//קריאת משתני סביבה
-builder.Configuration.AddEnvironmentVariables();
+
 
 // הוספת Authorization
 builder.Services.AddAuthorization();
