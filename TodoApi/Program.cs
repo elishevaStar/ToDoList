@@ -33,6 +33,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = key
         };
     });
+//קריאת משתני סביבה
+builder.Configuration.AddEnvironmentVariables();
 
 // הוספת Authorization
 builder.Services.AddAuthorization();
