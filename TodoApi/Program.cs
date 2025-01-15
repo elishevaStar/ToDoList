@@ -94,7 +94,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment() || builder.Configuration.GetValue<bool>("EnableSwagger"))
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    // app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Todo API V1");
+        c.RoutePrefix = "swagger"; 
+    });
 }
 
 // שימוש ב-CORS
@@ -205,8 +210,8 @@ app.MapDelete("/items/{id}", async (ToDoDbContext context, int id) =>
     await context.SaveChangesAsync();
     return Results.NoContent();
 }).RequireAuthorization();
+//למנוע שגיאת 404
 app.MapGet("/", () => "Todo API is running. Use the endpoints.");
 // הפעלת האפליקציה
-// app.Run();
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 app.Run($"http://0.0.0.0:{port}");
