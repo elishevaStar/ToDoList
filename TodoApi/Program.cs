@@ -205,7 +205,7 @@ app.MapDelete("/items/{id}", async (ToDoDbContext context, int id) =>
     await context.SaveChangesAsync();
     return Results.NoContent();
 }).RequireAuthorization();
-
+app.MapGet("/", () => "Todo API is running. Use the endpoints.");
 // הפעלת האפליקציה
 // app.Run();
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
