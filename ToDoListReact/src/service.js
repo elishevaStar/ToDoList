@@ -49,6 +49,7 @@ export default {
   // התחברות
   login: async (Username, PasswordHash) => {
     try {
+      console.log(Username,PasswordHash);
       // שליחת הבקשה לשרת
       const response = await apiClient.post("/login", { Username, PasswordHash });
   
