@@ -3,7 +3,7 @@ import axios from 'axios';
 // הגדרת כתובת ה-API כ-default
 const apiClient = axios.create({
   // baseURL: process.env.REACT_APP_API_URL, 
-  baseURL:"https://todolistserver-otsh.onrender.com", 
+  baseURL:"https://todolistserver-otsh.onrender.com/", 
   headers: {
     "Content-Type": "application/json",
   },
