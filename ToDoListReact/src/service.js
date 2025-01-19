@@ -52,6 +52,7 @@ export default {
       const token = response.data.token; // בדוק שמבנה התגובה מתאים
       if (token) {
         localStorage.setItem("jwtToken", token); // שמירת הטוקן ב-localStorage
+        console.log("Token saved:", token);
       }
       return response.data;
     } catch (err) {
