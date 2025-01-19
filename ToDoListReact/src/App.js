@@ -59,7 +59,7 @@ function App() {
       </header>
       <section className="main" style={{ display: "block" }}>
         <ul className="todo-list">
-          {todos.map((todo) => (
+          {Array.isArray(todos) && todos.map((todo) => (
             <li className={todo.isComplete ? "completed" : ""} key={todo.id}>
               <div className="view">
                 <input
