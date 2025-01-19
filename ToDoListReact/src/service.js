@@ -48,19 +48,38 @@ export default {
   // התחברות
   login: async (Username, PasswordHash) => {
     try {
+      // שליחת הבקשה לשרת
       const response = await apiClient.post("/login", { Username, PasswordHash });
-      console.log("Login response:", response); // לוג לתגובה מה-API
-      const token = response.data.token; // בדוק שמבנה התגובה מתאים
-      if (token) {
-        localStorage.setItem("jwtToken", token); // שמירת הטוקן ב-localStorage
-        console.log("Token saved:", token);
+  
+      // הדפסת התגובה המלאה ללוג לדיבוג
+      console.log("Login response:", response);
+  
+      // בדיקת קיום התגובה
+      if (!response || !response.data) {
+        throw new Error("No response or data received from the server.");
       }
+  
+      // קבלת הטוקן מהתגובה
+      const token = response.data.token;
+  
+      // בדיקת תקינות הטוקן
+      if (!token) {
+        throw new Error("Token not found in response data.");
+      }
+  
+      // שמירת הטוקן ב-localStorage
+      localStorage.setItem("jwtToken", token);
+      console.log("Token saved:", token);
+  
+      // החזרת הנתונים
       return response.data;
     } catch (err) {
+      // טיפול בשגיאות ודיבוג
       console.error("Login failed:", err.response?.data || err.message);
       throw err; // העברת השגיאה הלאה לטיפול בקומפוננטה
     }
   },
+  
 
   // קבלת כל המשימות
   getTasks: async () => {
