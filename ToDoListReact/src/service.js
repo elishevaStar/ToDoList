@@ -2,8 +2,7 @@ import axios from 'axios';
 
 // הגדרת כתובת ה-API כ-default
 const apiClient = axios.create({
-  // baseURL: process.env.REACT_APP_API_URL, 
-  baseURL:"https://todolistserver-otsh.onrender.com/", 
+  baseURL: process.env.REACT_APP_API_URL, 
   headers: {
     "Content-Type": "application/json",
   },
@@ -49,7 +48,6 @@ export default {
   // התחברות
   login: async (Username, PasswordHash) => {
     try {
-      console.log(Username,PasswordHash);
       // שליחת הבקשה לשרת
       const response = await apiClient.post("/login", { Username, PasswordHash });
   
