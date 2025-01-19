@@ -49,7 +49,7 @@ export default {
   login: async (Username, PasswordHash) => {
     try {
       const response = await apiClient.post("/login", { Username, PasswordHash });
-      console.log("Login response:", response.data); // לוג לתגובה מה-API
+      console.log("Login response:", response); // לוג לתגובה מה-API
       const token = response.data.token; // בדוק שמבנה התגובה מתאים
       if (token) {
         localStorage.setItem("jwtToken", token); // שמירת הטוקן ב-localStorage
