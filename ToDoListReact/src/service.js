@@ -63,6 +63,7 @@ export default {
   // קבלת כל המשימות
   getTasks: async () => {
     const result = await apiClient.get("/items");
+    console.log("getTasks response:", result.data); // בדוק מה מוחזר מהשרת
     return result.data;
   },
 
