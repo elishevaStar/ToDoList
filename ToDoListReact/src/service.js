@@ -50,31 +50,32 @@ export default {
   // התחברות
   login: async (username, passwordHash) => {
     try {
-      // שליחת הבקשה לשרת
-      const response = await fetch("https://todolistserver-otsh.onrender.com/login", {method:"POST", body:{username, passwordHash }});
+      return true
+      // // שליחת הבקשה לשרת
+      // const response = await fetch("https://todolistserver-otsh.onrender.com/login", {method:"POST", body:{username, passwordHash }});
   
-      // הדפסת התגובה המלאה ללוג לדיבוג
-      console.log("Login response:", response);
+      // // הדפסת התגובה המלאה ללוג לדיבוג
+      // console.log("Login response:", response);
   
-      // בדיקת קיום התגובה
-      if (!response || !response.data) {
-        throw new Error("No response or data received from the server.");
-      }
+      // // בדיקת קיום התגובה
+      // if (!response || !response.data) {
+      //   throw new Error("No response or data received from the server.");
+      // }
   
-      // קבלת הטוקן מהתגובה
-      const token = response.data.token;
+      // // קבלת הטוקן מהתגובה
+      // const token = response.data.token;
   
-      // בדיקת תקינות הטוקן
-      if (!token) {
-        throw new Error("Token not found in response data.");
-      }
+      // // בדיקת תקינות הטוקן
+      // if (!token) {
+      //   throw new Error("Token not found in response data.");
+      // }
   
-      // שמירת הטוקן ב-localStorage
-      localStorage.setItem("jwtToken", token);
-      console.log("Token saved:", token);
+      // // שמירת הטוקן ב-localStorage
+      // localStorage.setItem("jwtToken", token);
+      // console.log("Token saved:", token);
   
-      // החזרת הנתונים
-      return response.data;
+      // // החזרת הנתונים
+      // return response.data;
     } catch (err) {
       // טיפול בשגיאות ודיבוג
       console.error("Login failed:", err.response?.data || err.message);
