@@ -46,10 +46,10 @@ apiClient.interceptors.response.use(
 // פונקציות API
 export default {
   // התחברות
-  login: async (Username, PasswordHash) => {
+  login: async (username, passwordHash) => {
     try {
       // שליחת הבקשה לשרת
-      const response = await apiClient.post("/login", { Username, PasswordHash });
+      const response = await apiClient.post("/login", { username, passwordHash });
   
       // הדפסת התגובה המלאה ללוג לדיבוג
       console.log("Login response:", response);
