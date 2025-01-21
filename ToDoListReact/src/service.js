@@ -51,7 +51,7 @@ export default {
   login: async (username, passwordHash) => {
     try {
       // שליחת הבקשה לשרת
-      const response = await axios.post("/login", { username, passwordHash });
+      const response = await fetch("https://todolistserver-otsh.onrender.com/login", {method:"POST", body:{username, passwordHash }});
   
       // הדפסת התגובה המלאה ללוג לדיבוג
       console.log("Login response:", response);
