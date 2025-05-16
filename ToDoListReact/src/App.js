@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import service from './service.js';
-import Login from './Login.js';
+// import Login from './Login.js';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useState([]);
 
@@ -13,7 +13,7 @@ function App() {
       setTodos(todos);
     } catch (err) {
       console.error(err);
-      setIsLoggedIn(false); // אם ה-Token אינו תקף
+      // setIsLoggedIn(false); // אם ה-Token אינו תקף
     }
   }
 
@@ -34,15 +34,19 @@ function App() {
     await getTodos();
   }
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      getTodos();
-    }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   // if (isLoggedIn) {
+  //     getTodos();
+  //   // }
+  // }, [isLoggedIn]);
 
-  if (!isLoggedIn) {
-    return <Login onLogin={() => setIsLoggedIn(true)} />;
-  }
+  // if (!isLoggedIn) {
+  //   return <Login onLogin={() => setIsLoggedIn(true)} />;
+  // }
+
+  useEffect(() => {
+      getTodos();
+  }, []);
 
   return (
     <section className="todoapp">
