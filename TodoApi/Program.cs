@@ -166,7 +166,7 @@ app.MapPost("/login", async (User login, IConfiguration config, ToDoDbContext db
 app.MapGet("/items", async (ToDoDbContext context) =>
 {
     return await context.Items.ToListAsync();
-}).RequireAuthorization();
+})
 
 // הוספת Route להוספת משימה חדשה (דורש אימות)
 app.MapPost("/items", async (ToDoDbContext context, Item newItem) =>
@@ -179,7 +179,7 @@ app.MapPost("/items", async (ToDoDbContext context, Item newItem) =>
     context.Items.Add(newItem);
     await context.SaveChangesAsync();
     return Results.Created($"/items/{newItem.Id}", newItem);
-}).RequireAuthorization();
+})
 
 // הוספת Route לעדכון משימה (דורש אימות)
 app.MapPut("/items/{id}", async (ToDoDbContext context, int id, Item updatedItem) =>
@@ -195,7 +195,7 @@ app.MapPut("/items/{id}", async (ToDoDbContext context, int id, Item updatedItem
 
     await context.SaveChangesAsync();
     return Results.NoContent();
-}).RequireAuthorization();
+})
 
 // הוספת Route למחיקת משימה (דורש אימות)
 app.MapDelete("/items/{id}", async (ToDoDbContext context, int id) =>
@@ -209,7 +209,7 @@ app.MapDelete("/items/{id}", async (ToDoDbContext context, int id) =>
     context.Items.Remove(item);
     await context.SaveChangesAsync();
     return Results.NoContent();
-}).RequireAuthorization();
+})
 //למנוע שגיאת 404
 app.MapGet("/", () => "Todo API is running. Use the endpoints.");
 // הפעלת האפליקציה
