@@ -51,7 +51,7 @@ function App() {
   return (
     <section className="todoapp">
       <header className="header">
-        <h1>todos</h1>
+        <h1>מטלות</h1>
         <form onSubmit={createTodo}>
           <input
             className="new-todo"
